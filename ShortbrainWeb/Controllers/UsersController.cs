@@ -66,6 +66,7 @@ namespace ShortbrainWeb.Controllers
                 userInDb.Name = user.Name;
                 userInDb.Username = user.Username;
                 userInDb.Firstname = user.Firstname;
+                userInDb.Email = user.Email;
                 userInDb.IsSubscribedToNewsLetter = user.IsSubscribedToNewsLetter;
                 userInDb.MembershipTypeId = user.MembershipTypeId;
             } 
