@@ -20,7 +20,9 @@ namespace ShortbrainWeb.Models
         [Display(Name = "Prénom")]
         public string Firstname { get; set; }
 
+        [Required(ErrorMessage = "Renseigner une adresse email valide.")]
         [Display(Name = "Email")]
+        [EmailAddress]
         public string Email { get; set; }
 
         public bool IsSubscribedToNewsLetter { get; set; }
