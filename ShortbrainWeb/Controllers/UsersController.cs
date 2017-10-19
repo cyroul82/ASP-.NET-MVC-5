@@ -33,10 +33,10 @@ namespace ShortbrainWeb.Controllers
             return View(users);
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Detail(int id)
         {
             
-            var user = _context.Users.SingleOrDefault(u => u.Id == id);
+            var user = _context.Users.Include(u => u.MembershipType).SingleOrDefault(u => u.Id == id);
 
             if (user != null)
             {
