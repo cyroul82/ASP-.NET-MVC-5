@@ -233,8 +233,25 @@
     <Compile Include="Migrations\201710191320279_AddBirthdatePropertyToUserNullable.Designer.cs">
       <DependentUpon>201710191320279_AddBirthdatePropertyToUserNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710191343208_AddedProjectTableToDB.cs" />
+    <Compile Include="Migrations\201710191343208_AddedProjectTableToDB.Designer.cs">
+      <DependentUpon>201710191343208_AddedProjectTableToDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710191353137_AddedCategoryPropertyAndRelationsToProject.cs" />
+    <Compile Include="Migrations\201710191353137_AddedCategoryPropertyAndRelationsToProject.Designer.cs">
+      <DependentUpon>201710191353137_AddedCategoryPropertyAndRelationsToProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710191358229_RemoveCategoryIdPropertyToProjetctBecauseUseless.cs" />
+    <Compile Include="Migrations\201710191358229_RemoveCategoryIdPropertyToProjetctBecauseUseless.Designer.cs">
+      <DependentUpon>201710191358229_RemoveCategoryIdPropertyToProjetctBecauseUseless.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710191359563_PopulateCategoryTable.cs" />
+    <Compile Include="Migrations\201710191359563_PopulateCategoryTable.Designer.cs">
+      <DependentUpon>201710191359563_PopulateCategoryTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -350,6 +367,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710191320279_AddBirthdatePropertyToUserNullable.resx">
       <DependentUpon>201710191320279_AddBirthdatePropertyToUserNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710191343208_AddedProjectTableToDB.resx">
+      <DependentUpon>201710191343208_AddedProjectTableToDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710191353137_AddedCategoryPropertyAndRelationsToProject.resx">
+      <DependentUpon>201710191353137_AddedCategoryPropertyAndRelationsToProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710191358229_RemoveCategoryIdPropertyToProjetctBecauseUseless.resx">
+      <DependentUpon>201710191358229_RemoveCategoryIdPropertyToProjetctBecauseUseless.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710191359563_PopulateCategoryTable.resx">
+      <DependentUpon>201710191359563_PopulateCategoryTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
