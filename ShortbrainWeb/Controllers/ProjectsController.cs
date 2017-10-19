@@ -31,5 +31,19 @@ namespace ShortbrainWeb.Controllers
 
             return View(projects);
         }
+
+        public ActionResult Detail(int id)
+        {
+            var project = _context.Projects.Include(p => p.Category).SingleOrDefault(p => p.Id == id);
+
+            if (project != null)
+            {
+                return View(project);
+            }
+            else
+            {
+                return Content("ID not found !");
+            }
+        }
     }
 }

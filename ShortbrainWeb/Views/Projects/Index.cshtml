@@ -20,7 +20,7 @@
     {
         <tr>
             <th scope="row">@project.Id</th>
-            <td>@project.Name</td>
+            <td>@Html.ActionLink(@project.Name, "Detail", "Projects", new {id=@project.Id}, null)</td>
             <td>@project.Category.Name</td>
         </tr>
     }
