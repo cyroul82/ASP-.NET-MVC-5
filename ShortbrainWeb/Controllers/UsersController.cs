@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,7 +27,7 @@ namespace ShortbrainWeb.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            var users = _context.Users.ToList();
+            var users = _context.Users.Include(c => c.MembershipType).ToList();
 
             //var users = Get
             return View(users);
