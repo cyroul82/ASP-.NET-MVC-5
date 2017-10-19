@@ -24,6 +24,18 @@ namespace ShortbrainWeb.Controllers
             _context.Dispose();
         }
 
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new UserFormViewModel
+            {
+                MembershipTypes = membershipTypes
+
+            };
+
+            return View("UserForm", viewModel);
+        }
+
         // GET: Users
         public ActionResult Index()
         {
@@ -31,6 +43,26 @@ namespace ShortbrainWeb.Controllers
 
             //var users = Get
             return View(users);
+        }
+
+        [HttpPost]
+        public ActionResult Save(User user)
+        {
+            if (user.Id == 0)
+                _context.Users.Add(user);
+            else
+            {
+                var userInDb = _context.Users.Single(u => u.Id == user.Id);
+                userInDb.Name = user.Name;
+                userInDb.Username = user.Username;
+                userInDb.Firstname = user.Firstname;
+                userInDb.IsSubscribedToNewsLetter = user.IsSubscribedToNewsLetter;
+                userInDb.MembershipTypeId = user.MembershipTypeId;
+            } 
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Users");
         }
 
         public ActionResult Detail(int id)
@@ -44,8 +76,25 @@ namespace ShortbrainWeb.Controllers
             }
             else
             {
-                return Content("User does not exist with this id");
+                return HttpNotFound();
             }
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var user = _context.Users.Include(u => u.MembershipType).SingleOrDefault(u => u.Id == id);
+
+            if (user == null)
+                return HttpNotFound();
+
+            var viewModel = new UserFormViewModel
+            {
+                User = user,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return View("UserForm", viewModel);
+
         }
 
     }
