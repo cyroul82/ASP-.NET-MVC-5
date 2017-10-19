@@ -217,6 +217,14 @@
     <Compile Include="Migrations\201710190811561_ApplyAnnotationToCustomerName.Designer.cs">
       <DependentUpon>201710190811561_ApplyAnnotationToCustomerName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710190918416_AddedPropertyNameToMemberShip.cs" />
+    <Compile Include="Migrations\201710190918416_AddedPropertyNameToMemberShip.Designer.cs">
+      <DependentUpon>201710190918416_AddedPropertyNameToMemberShip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710190920080_UpdateNameInTAbleMermberShip.cs" />
+    <Compile Include="Migrations\201710190920080_UpdateNameInTAbleMermberShip.Designer.cs">
+      <DependentUpon>201710190920080_UpdateNameInTAbleMermberShip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -289,6 +297,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -321,6 +330,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710190811561_ApplyAnnotationToCustomerName.resx">
       <DependentUpon>201710190811561_ApplyAnnotationToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710190918416_AddedPropertyNameToMemberShip.resx">
+      <DependentUpon>201710190918416_AddedPropertyNameToMemberShip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710190920080_UpdateNameInTAbleMermberShip.resx">
+      <DependentUpon>201710190920080_UpdateNameInTAbleMermberShip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

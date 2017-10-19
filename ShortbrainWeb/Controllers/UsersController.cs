@@ -33,5 +33,20 @@ namespace ShortbrainWeb.Controllers
             return View(users);
         }
 
+        public ActionResult Edit(int id)
+        {
+            
+            var user = _context.Users.SingleOrDefault(u => u.Id == id);
+
+            if (user != null)
+            {
+                return View(user);
+            }
+            else
+            {
+                return Content("User does not exist with this id");
+            }
+        }
+
     }
 }
