@@ -1,0 +1,33 @@
+﻿@model ShortbrainWeb.ViewModels.ProjectFormViewModel
+
+@{
+    ViewBag.Title = "Project";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Project</h2>
+
+@using (Html.BeginForm("Save", "Projects"))
+{
+    <div class="form-group">
+        @Html.LabelFor(u => u.Project.Name)
+        @Html.TextBoxFor(u => u.Project.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.Project.Description)
+        @Html.TextBoxFor(u => u.Project.Description, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.Project.Date)
+        @Html.TextBoxFor(u => u.Project.Date, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.Project.Category)
+        @Html.DropDownListFor(u => u.Project.Category, new SelectList(Model.Categories, "Id", "Name"), "Select Category", new { @class = "form-control" })
+    </div>
+ 
+
+    @Html.HiddenFor(u => u.Project.Id)
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+}
