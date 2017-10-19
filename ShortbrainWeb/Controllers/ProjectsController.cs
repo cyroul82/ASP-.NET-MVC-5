@@ -85,7 +85,7 @@ namespace ShortbrainWeb.Controllers
             else
             {
                 var projectInDB = _context.Projects.Include(p => p.Category).Single(p => p.Id == project.Id);
-                projectInDB.Category = project.Category;
+                projectInDB.CategoryId = project.CategoryId;
                 projectInDB.Date = project.Date;
                 projectInDB.Description = project.Description;
                 projectInDB.Name = project.Name;
@@ -94,6 +94,19 @@ namespace ShortbrainWeb.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Projects");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var project = _context.Projects.SingleOrDefault(p => p.Id == id);
+            if (project == null)
+                return HttpNotFound();
+
+            _context.Projects.Remove(project);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Projects");
+
         }
     }
 }

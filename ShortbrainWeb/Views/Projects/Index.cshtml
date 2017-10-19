@@ -6,13 +6,16 @@
 }
 
 <h2>Liste des Projets</h2>
-
+<p>
+    @Html.ActionLink("Nouveau", "New", "Projects", new { @class = "btn btn-primary" }) 
+</p>
 <table class="table table-striped table-hover">
     <thead>
     <tr>
         <th>Id</th> 
         <th>Name</th> 
-        <th>Category</th> 
+        <th>Category</th>
+        <th></th>
     </tr>
     </thead> 
     <tbody>
@@ -22,6 +25,13 @@
             <th scope="row">@project.Id</th>
             <td>@Html.ActionLink(@project.Name, "Detail", "Projects", new {id=@project.Id}, null)</td>
             <td>@project.Category.Name</td>
+            <td>
+                @Html.ActionLink("Detail", "Detail", "Projects", new { id = @project.Id }, null) |
+                @Html.ActionLink("Editer", "Edit", "Projects", new {id = @project.Id }, null) |
+                @Html.ActionLink("Supprimer", "Delete", "Projects", new { id = @project.Id }, null)
+
+
+            </td>
         </tr>
     }
     </tbody>

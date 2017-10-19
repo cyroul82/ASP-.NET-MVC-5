@@ -249,6 +249,10 @@
     <Compile Include="Migrations\201710191359563_PopulateCategoryTable.Designer.cs">
       <DependentUpon>201710191359563_PopulateCategoryTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710192012396_AddedPropertyCategoryIdToProject.cs" />
+    <Compile Include="Migrations\201710192012396_AddedPropertyCategoryIdToProject.Designer.cs">
+      <DependentUpon>201710192012396_AddedPropertyCategoryIdToProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -384,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710191359563_PopulateCategoryTable.resx">
       <DependentUpon>201710191359563_PopulateCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710192012396_AddedPropertyCategoryIdToProject.resx">
+      <DependentUpon>201710192012396_AddedPropertyCategoryIdToProject.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
