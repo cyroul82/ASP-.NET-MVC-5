@@ -29,6 +29,7 @@ namespace ShortbrainWeb.Controllers
             var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new UserFormViewModel
             {
+                User = new User(),
                 MembershipTypes = membershipTypes
 
             };
@@ -46,8 +47,11 @@ namespace ShortbrainWeb.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(User user)
         {
+            Console.WriteLine(user);
+            Console.WriteLine(user.Id);
             if (!ModelState.IsValid)
             {
                 var viewModel = new UserFormViewModel
