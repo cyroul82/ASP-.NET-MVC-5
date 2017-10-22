@@ -14,6 +14,7 @@ namespace ShortbrainWeb.App_Start
         {
             this.CreateMap<User, UserDto>();
             this.CreateMap<UserDto, User>();
+            this.CreateMap<MembershipType, MembershipTypeDto>();
         }
     }
 }

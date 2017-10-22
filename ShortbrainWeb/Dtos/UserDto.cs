@@ -29,6 +29,8 @@ namespace ShortbrainWeb.Dtos
         [Required]
         public byte MembershipTypeId { get; set; }
 
+        public MembershipTypeDto MembershipType { get; set; }
+
         //[Min18Years]
         public DateTime? Birthdate { get; set; }
     }

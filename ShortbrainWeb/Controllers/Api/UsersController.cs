@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -23,7 +24,10 @@ namespace ShortbrainWeb.Controllers.Api
         // GET /api/users
         public IEnumerable<UserDto> GetUsers()
         {
-            return _context.Users.ToList().Select(Mapper.Map<User, UserDto>);
+            return _context.Users
+                .Include(u => u.MembershipType)
+                .ToList()
+                .Select(Mapper.Map<User, UserDto>);
         }
 
         // GET /api/users/1
