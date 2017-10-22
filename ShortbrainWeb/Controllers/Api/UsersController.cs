@@ -27,32 +27,39 @@ namespace ShortbrainWeb.Controllers.Api
         }
 
         // GET /api/users/1
-        public User GetUser(int id)
+        public IHttpActionResult GetUser(int id)
         {
             User user = _context.Users.SingleOrDefault(u => u.Id == id);
 
             if (user == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                //throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return user;
+            //return Mapper.Map<User, UserDto>(user);
+            return Ok(Mapper.Map<User, UserDto>(user));
         }
 
         //POST /api/users
         [HttpPost]
-        public User CreateUser(User user)
+        public IHttpActionResult CreateUser(UserDto userDto)
         {
-            if(!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            if (!ModelState.IsValid)
+                return BadRequest();
+                //throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            var user = Mapper.Map<UserDto, User>(userDto);
             _context.Users.Add(user);
             _context.SaveChanges();
 
-            return user;
+            userDto.Id = user.Id;
+
+            //return userDto;
+            return Created(new Uri(Request.RequestUri + "/" + user.Id), userDto);
         }
 
         //PUT /api/users/1
         [HttpPut]
-        public void UpdateUser(int id, User user)
+        public void UpdateUser(int id, UserDto userDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -62,13 +69,14 @@ namespace ShortbrainWeb.Controllers.Api
             if (userInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            userInDb.Username = user.Username;
-            userInDb.Name = user.Name;
-            userInDb.Firstname = user.Firstname;
-            userInDb.Birthdate = user.Birthdate;
-            userInDb.Email = user.Email;
-            userInDb.IsSubscribedToNewsLetter = user.IsSubscribedToNewsLetter;
-            userInDb.MembershipTypeId = user.MembershipTypeId;
+            Mapper.Map(userDto, userInDb);
+            //userInDb.Username = userDto.Username;
+            //userInDb.Name = userDto.Name;
+            //userInDb.Firstname = userDto.Firstname;
+            //userInDb.Birthdate = userDto.Birthdate;
+            //userInDb.Email = userDto.Email;
+            //userInDb.IsSubscribedToNewsLetter = userDto.IsSubscribedToNewsLetter;
+            //userInDb.MembershipTypeId = userDto.MembershipTypeId;
 
             _context.SaveChanges();
         }
