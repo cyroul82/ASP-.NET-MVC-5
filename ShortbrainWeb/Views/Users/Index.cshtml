@@ -10,17 +10,17 @@
 <table id="users" class="table table-striped table-hover">
     <thead>
     <tr>
-        <th>Id</th> 
-        <th>Username</th> 
+        @*<th>Id</th>*@ 
+        @*<th>Username</th>*@ 
         <th>Last Name</th> 
-        <th>First Name</th>
-        <th>News Letter</th>
+        @*<th>First Name</th>
+        <th>News Letter</th>*@
         <th>Member</th>
         <th>Delete</th>
     </tr>
     </thead> 
     <tbody>
-    @foreach (var user in Model)
+    @*@foreach (var user in Model)
     {
         <tr>
             <th scope="row">@user.Id</th>
@@ -31,25 +31,54 @@
             <td>@user.MembershipType.Name</td>
             <td><button data-customer-id="@user.Id" class="btn-link js-delete">Delete</button></td>
         </tr>
-    }
+    }*@
     </tbody>
 </table>
 
 @section scripts{
     <script>
-        $(document).ready(function() {
-            $('#users .js-delete').on('click',
+        $(document).ready(function () {
+
+            $("#users").DataTable({
+                ajax: {
+                    url: "/api/users",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name", 
+                        render: function(data, type, user) {
+                            return "<a href='/users/edit/" + user.id + "'>" + user.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "id",
+                        render: function(data) {
+                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+        });
+
+            $('#users').on('click', ".js-delete",
                 function () {
                     var button = $(this);
-                    if (confirm("Are you sure you wan to delete this customer")) {
-                        $.ajax({
-                            url: "/api/users/" + button.attr("data-customer-id"),
-                            method: "DELETE",
-                            success: function() {
-                                button.parents('tr').remove();
+                    bootbox.confirm("Are you sure you want to delete this customer",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/api/users/" + button.attr("data-customer-id"),
+                                    method: "DELETE",
+                                    success: function() {
+                                        button.parents('tr').remove();
+                                    }
+                                });
                             }
                         });
-                    };
+                   
                 });
         });
 

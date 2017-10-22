@@ -40,10 +40,10 @@ namespace ShortbrainWeb.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            var users = _context.Users.Include(c => c.MembershipType).ToList();
+            //var users = _context.Users.Include(c => c.MembershipType).ToList();
 
-            //var users = Get
-            return View(users);
+            //return View(users);
+            return View();
         }
 
         [HttpPost]
