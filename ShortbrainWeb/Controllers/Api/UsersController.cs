@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using ShortbrainWeb.Dtos;
 using ShortbrainWeb.Models;
 
 namespace ShortbrainWeb.Controllers.Api
@@ -19,9 +21,9 @@ namespace ShortbrainWeb.Controllers.Api
         }
 
         // GET /api/users
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<UserDto> GetUsers()
         {
-            return _context.Users.ToList();
+            return _context.Users.ToList().Select(Mapper.Map<User, UserDto>);
         }
 
         // GET /api/users/1
